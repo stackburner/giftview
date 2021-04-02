@@ -2,5 +2,5 @@
 .idea
 venv
 __pycache__
-privateconfig.ini
-db.py
+giftview/privateconfig.ini
+giftview/db.py

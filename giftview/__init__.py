@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
-from models import db, Gift
-from forms import GiftForm
-from mailer import Mail
+from giftview.models import db, Gift
+from giftview.forms import GiftForm
+from giftview.mailer import Mail
 import configparser
 import os
 
