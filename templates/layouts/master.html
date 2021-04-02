@@ -1,0 +1,47 @@
+{% from 'helpers/_forms.html' import generate_fields with context %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock %} | Gifts </title>
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  </head>
+  <body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <a class="navbar-brand" href="{{ url_for('gifts') }}">Herzlich willkommen auf der Geschenke-Wunschliste von Alexandra & Lennart!</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav navbar-right">
+			  <li><a href="{{ url_for('new_gift') }}">New</a></li>
+			  <li><a href="{{ url_for('gifts') }}">View gifts</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	<h4><p class="text-center">
+  		Bitte beachten: <small class="text-muted">Wenn Ihr euch für ein Geschenk entschieden habt, nehmt es
+		einfach per 'Delete' von der Liste. Wir erfahren nicht wer welches Geschenk wählt!</small>
+	</p></h4>
+	<div class="container">
+		{# Flashed messages #}
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		  {% if messages %}
+			{% for category, message in messages %}
+			  <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+			{% endfor %}
+		  {% endif %}
+		{% endwith %}
+		{# End Flashed messages #}
+		{% block body %}{% endblock %}
+	</div>
+	<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-confirmation.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
